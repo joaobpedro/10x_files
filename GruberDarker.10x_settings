@@ -41,7 +41,7 @@ UI.Panels.Inactive Tab Text:                      149, 169, 159
 UI.Panels.Inactive Tab:                           24, 24, 24
 
 # Colour of the scrollbar background
-UI.Panels.Scrollbar Background:                   0, 0, 0
+UI.Panels.Scrollbar Background:                   20, 20, 20
 
 # Colour of the scrollbar bar
 UI.Panels.Scrollbar Bar:                          69, 61, 65
@@ -146,7 +146,7 @@ Editor.Rename Symbol Fore:                        24, 24, 24
 Editor.Line Numbers:                              100, 100, 100
 
 # Margin colour
-Editor.Margin:                                    0, 0, 0
+Editor.Margin:                                    20, 20, 20
 
 # Current symbol highlight colour
 Editor.SymbolHighlight:                           69, 61, 65
@@ -368,7 +368,7 @@ Language.Custom8:                                 244, 56, 65
 Language.Custom9:                                 228, 228, 239
 
 # Custom color defined in all color schemes that can be used in the syntax highlighting rules
-Language.Custom10:                                24, 24, 24
+Language.Custom10:                                20, 20, 20
 
 # Document Heading
 Language.Heading:                                 255, 221, 51
