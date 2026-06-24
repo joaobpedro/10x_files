@@ -49,6 +49,7 @@ def RemoveCheckbox():
 
 #------------------------------------------------------------------------
 def FormatMarkdownTables():
+    def FormatMarkdownTable():
     if not N10X.Editor.TextEditorHasFocus():
         return
 
@@ -56,7 +57,6 @@ def FormatMarkdownTables():
     line_count = N10X.Editor.GetLineCount()
 
     # --- Phase 1: Find Table Boundaries ---
-    # Scan up to find the start of the table
     start_y = current_y
     while start_y > 0:
         prev_line = N10X.Editor.GetLine(start_y - 1).strip()
@@ -64,7 +64,6 @@ def FormatMarkdownTables():
             break
         start_y -= 1
 
-    # Scan down to find the end of the table
     end_y = current_y
     while end_y < line_count - 1:
         next_line = N10X.Editor.GetLine(end_y + 1).strip()
@@ -72,43 +71,57 @@ def FormatMarkdownTables():
             break
         end_y += 1
 
-    # Verify we are actually sitting inside a table block
     current_line_text = N10X.Editor.GetLine(current_y).strip()
     if not current_line_text.startswith('|') or not current_line_text.endswith('|'):
         N10X.Editor.SetStatusBarText("Not inside a Markdown table block.")
         return
 
-    # --- Phase 2: Parse Rows & Compute Column Widths ---
+    # --- Phase 2: Parse Rows Safely ---
     raw_rows = []
-    max_col_widths = {}
-    is_separator_row = {} # Track which rows are just dashes (e.g., |---|---|)
+    is_separator_row = {}
+    max_num_columns = 0
 
     for idx, y in enumerate(range(start_y, end_y + 1)):
         line_text = N10X.Editor.GetLine(y).strip()
         
-        # Strip the wrapping outer pipes and split by inner pipes
-        inner_content = line_text[1:-1]
-        cells = [cell.strip() for cell in inner_content.split('|')]
+        # BUG FIX HERE: 
+        # Instead of a simple split that gets tripped up by trailing pipes,
+        # strip exactly ONE leading and ONE trailing pipe, then split.
+        if line_text.startswith('|'): line_text = line_text[1:]
+        if line_text.endswith('|'): line_text = line_text[:-1]
         
-        # Check if this row is a Markdown separator (only dashes, colons, or spaces)
+        cells = [cell.strip() for cell in line_text.split('|')]
+        
+        # Check if it's a separator row (e.g., |---|---|)
         is_sep = all(all(c in '-: ' for c in cell) for cell in cells) if cells else False
         is_separator_row[idx] = is_sep
         
         raw_rows.append(cells)
-        
-        # We only calculate widths using actual content rows, not the separator row
-        if not is_sep:
+        if len(cells) > max_num_columns:
+            max_num_columns = len(cells)
+
+    # Balance rows and compute maximum column widths
+    max_col_widths = {}
+    for idx, cells in enumerate(raw_rows):
+        # Pad shorter rows up to match the maximum column count
+        while len(cells) < max_num_columns:
+            cells.append("")
+            
+        raw_rows[idx] = cells
+
+        # Only measure text width on data rows
+        if not is_separator_row[idx]:
             for col_idx, cell in enumerate(cells):
                 cell_len = len(cell)
                 if col_idx not in max_col_widths or cell_len > max_col_widths[col_idx]:
                     max_col_widths[col_idx] = cell_len
 
-    # Default fallback: if it's an entirely empty table shell, give a default width
-    for col_idx in range(len(raw_rows[0])):
-        if col_idx not in max_col_widths:
+    # Default fallback for empty columns
+    for col_idx in range(max_num_columns):
+        if col_idx not in max_col_widths or max_col_widths[col_idx] < 3:
             max_col_widths[col_idx] = 3
 
-    # --- Phase 3: Format and Rewrite ---
+    # --- Phase 3: Format and Rewrite Lines ---
     N10X.Editor.PushUndoGroup()
     N10X.Editor.BeginTextUpdate()
 
@@ -117,26 +130,22 @@ def FormatMarkdownTables():
         formatted_cells = []
         
         if is_separator_row[idx]:
-            # Generate clean separator lines matching column widths: e.g., | --- | ----- |
-            for col_idx in range(len(cells)):
+            for col_idx in range(max_num_columns):
                 width = max_col_widths.get(col_idx, 3)
-                formatted_cells.append("-" * (width + 2)) # Pad matching text space
+                formatted_cells.append("-" * (width + 2))
         else:
-            # Format standard text cells with consistent spacing (1 space padding on sides)
-            for col_idx in range(len(cells)):
+            for col_idx in range(max_num_columns):
                 width = max_col_widths.get(col_idx, 3)
-                cell_text = cells[col_idx] if col_idx < len(cells) else ""
-                # Pad out the text cleanly to match maximum column width
+                cell_text = cells[col_idx]
                 padded_text = cell_text.ljust(width)
                 formatted_cells.append(f" {padded_text} ")
 
-        # Re-assemble the row with pipes and update 10x
         new_row_text = "|" + "|".join(formatted_cells) + "|"
         N10X.Editor.SetLine(y, new_row_text)
 
     N10X.Editor.EndTextUpdate()
     N10X.Editor.PopUndoGroup()
-    N10X.Editor.SetStatusBarText("Table formatted smoothly!")
+    N10X.Editor.SetStatusBarText("Table auto-completed and formatted!")
 
 # To make it run automatically on save, use AddPreFileSaveFunction
 def OnPreSave(filename):
