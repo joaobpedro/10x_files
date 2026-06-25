@@ -563,3 +563,8 @@ Alt Shift [:                 SelectInsideNextBraces
 Alt C:                       CopyEntireSelectedLines
                              
 Alt V:                       Paste
+
+Alt O:                       Show10XOutput
+
+Control Up:                  MoveCursorParagraphUp
+Control Down:                MoveCursorParagraphDown

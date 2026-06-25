@@ -49,7 +49,6 @@ def RemoveCheckbox():
 
 #------------------------------------------------------------------------
 def FormatMarkdownTables():
-    def FormatMarkdownTable():
     if not N10X.Editor.TextEditorHasFocus():
         return
 
@@ -519,3 +518,69 @@ def HighlightCurrentLine():
     # This automatically applies the editor's "selection highlight"
     N10X.Editor.SetSelection((0, line_index), (line_length, line_index))
 
+
+#------------------------------------------------------------------------
+
+def MoveCursorParagraphUp():
+    if not N10X.Editor.TextEditorHasFocus():
+        return
+
+    cx, current_y = N10X.Editor.GetCursorPos()
+    
+    # If already at the first line, do nothing
+    if current_y <= 0:
+        return
+
+    target_y = 0
+    inside_current_block = True
+
+    # Scan upward starting from the line above the cursor
+    for y in range(current_y - 1, -1, -1):
+        line_text = N10X.Editor.GetLine(y).strip()
+        
+        if inside_current_block:
+            # If we were in text and hit an empty line, we've exited the current paragraph
+            if not line_text:
+                inside_current_block = False
+        else:
+            # Stop at the first non-empty line we encounter moving upward
+            if line_text:
+                target_y = y
+                break
+
+    # Set the cursor to column 0 of the target line
+    N10X.Editor.SetCursorPos((0, target_y))
+    N10X.Editor.ScrollCursorIntoView()
+
+def MoveCursorParagraphDown():
+    if not N10X.Editor.TextEditorHasFocus():
+        return
+
+    cx, current_y = N10X.Editor.GetCursorPos()
+    line_count = N10X.Editor.GetLineCount()
+    
+    # If already at the last line, do nothing
+    if current_y >= line_count - 1:
+        return
+
+    target_y = line_count - 1
+    inside_current_block = True
+
+    # Scan downward starting from the line below the cursor
+    for y in range(current_y + 1, line_count):
+        line_text = N10X.Editor.GetLine(y).strip()
+        
+        if inside_current_block:
+            # If we were in text and hit an empty line, that's the boundary
+            if not line_text:
+                inside_current_block = False
+        else:
+            # Once we are past the empty space, stop at the first line of the next paragraph
+            if line_text:
+                target_y = y
+                break
+
+    # If we hit the end of the file without finding a new paragraph, 
+    # default to the last line.
+    N10X.Editor.SetCursorPos((0, target_y))
+    N10X.Editor.ScrollCursorIntoView()
