@@ -520,7 +520,6 @@ def HighlightCurrentLine():
 
 
 #------------------------------------------------------------------------
-
 def MoveCursorParagraphUp():
     if not N10X.Editor.TextEditorHasFocus():
         return
@@ -533,11 +532,11 @@ def MoveCursorParagraphUp():
 
     target_y = 0
     inside_current_block = True
+    line_count = N10X.Editor.GetLineCount()
 
     # Scan upward starting from the line above the cursor
     for y in range(current_y - 1, -1, -1):
         line_text = N10X.Editor.GetLine(y).strip()
-        
         if inside_current_block:
             # If we were in text and hit an empty line, we've exited the current paragraph
             if not line_text:
@@ -558,7 +557,7 @@ def MoveCursorParagraphDown():
 
     cx, current_y = N10X.Editor.GetCursorPos()
     line_count = N10X.Editor.GetLineCount()
-    
+        
     # If already at the last line, do nothing
     if current_y >= line_count - 1:
         return
@@ -584,3 +583,52 @@ def MoveCursorParagraphDown():
     # default to the last line.
     N10X.Editor.SetCursorPos((0, target_y))
     N10X.Editor.ScrollCursorIntoView()
+
+
+#------------------------------------------------------------------------
+# select paragraph
+#------------------------------------------------------------------------
+# SetSelection((start_x, start_y), (end_x, end_y), cursor_index=0)
+# 1. get the get the cursor position
+# 2. Navigate up and down the lines until empty line
+# 3. Get coordinates of those lines
+# 4. Set selection command for the coordinates
+#------------------------------------------------------------------------
+
+def SelectParagraph():
+    if not N10X.Editor.TextEditorHasFocus():
+        return;
+    
+    # x is the column and y is the line
+    cx, cy = N10X.Editor.GetCursorPos();
+    line_count = N10X.Editor.GetLineCount()
+
+    target_down_y = 0;
+    target_up_y = 0;
+    inside_paragraph = True;
+
+    for y in range(cy + 1, line_count):
+        line_text = N10X.Editor.GetLine(y).strip();
+
+        if inside_paragraph:
+            if not line_text:
+                inside_paragraph = False;
+                target_down_y = y-1;
+                break;
+  
+    inside_paragraph = True;
+    for y in range(cy - 1, -1, -1):
+        line_text = N10X.Editor.GetLine(y).strip();
+
+        if inside_paragraph:
+            if not line_text:
+                inside_paragraph = False;
+                target_up_y = y+1;
+                break;
+   
+    #set the selection
+    #get last line length
+    last_line_length = len(N10X.Editor.GetLine(target_down_y).rstrip());
+    N10X.Editor.SetSelection((0, target_up_y), (last_line_length, target_down_y), cursor_index=0)
+
+    return

@@ -366,7 +366,7 @@ F4:                          GotoNextResult
 Control Shift T:             RestoreRecentlyClosedFile
 
 # Move to the matching bracket or brace
-Control Shift \:             MoveToMatchingBracket
+Control Shift .:             MoveToMatchingBracket
 
 # Format the selection or the current scope if no selection
 Control K, Control F:        FormatSelection
@@ -483,10 +483,10 @@ Control K, Control I:        ShowSymbolInfo
 F1:                          InternetSearch
 
 # Zoom in on editor text (increase font size)
-Control Shift .:             ZoomIn
+#Control Shift .:             ZoomIn
 
 # Zoom in on editor text (decrease font size)
-Control Shift Comma:         ZoomOut
+#Control Shift Comma:         ZoomOut
 
 # Toggle fullscreen
 # Alt Enter:                   ToggleFullscreen
@@ -564,7 +564,9 @@ Alt C:                       CopyEntireSelectedLines
                              
 Alt V:                       Paste
 
-Alt O:                       Show10XOutput
+Alt Shift O:                 Show10XOutput
+
+Alt Shift P:				 SelectParagraph
 
 Control Up:                  MoveCursorParagraphUp
 Control Down:                MoveCursorParagraphDown
