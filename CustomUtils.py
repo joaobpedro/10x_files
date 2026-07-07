@@ -1,5 +1,5 @@
 import N10X
-import re
+import re ## regular expressions, super handy for things with text
 
 #------------------------------------------------------------------------
 def ToggleCheckbox():
@@ -488,31 +488,13 @@ def CopyEntireSelectedLines():
 
 
 #------------------------------------------------------------------------
-
-
-def SelectCurrentLine():
-    # Get current cursor position (column, line)
-    pos = N10X.Editor.GetCursorPos()
-    line_index = pos[1]
-    
-    # Set the cursor to the start of the line (column 0)
-    N10X.Editor.SetCursorPos((0, line_index))
-    
-    # Start the selection
-    N10X.Editor.ExecuteCommand("StartSelecting")
-    
-    # Move the cursor to the end of the line
-    # Note: Using a large column number or the MoveLineEnd command
-    N10X.Editor.ExecuteCommand("MoveLineEnd")
-
-
 def HighlightCurrentLine():
     # 1. Get the current line index
     _, line_index = N10X.Editor.GetCursorPos()
     
     # 2. Get the text of the line to find its length (to highlight to the very end)
     line_text = N10X.Editor.GetLine(line_index)
-    line_length = len(line_text) if line_text else 0
+    line_length = len(line_text.rstrip()) if line_text else 0
     
     # 3. Set the selection range: (start_col, start_line) to (end_col, end_line)
     # This automatically applies the editor's "selection highlight"

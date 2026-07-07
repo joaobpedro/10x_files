@@ -366,7 +366,7 @@ F4:                          GotoNextResult
 Control Shift T:             RestoreRecentlyClosedFile
 
 # Move to the matching bracket or brace
-Control Shift .:             MoveToMatchingBracket
+Control Alt M:             MoveToMatchingBracket
 
 # Format the selection or the current scope if no selection
 Control K, Control F:        FormatSelection
@@ -548,10 +548,10 @@ Control Shift A:             NewSearchPanel
 # Create or show an existing terminal. Cycle through if there are multiple.
 Control Shift I:             ShowTerminal
 
-# Checkbox tools             
+#-------------------------------------------------------------------------
+# Custom shortcurts             
 Alt X:                       ToggleCheckbox
                              
-# Remove Checkbox            
 Alt Shift X:                 RemoveCheckbox
                              
 Alt L:                       HighlightCurrentLine
@@ -562,7 +562,7 @@ Alt Shift [:                 SelectInsideNextBraces
                              
 Alt C:                       CopyEntireSelectedLines
                              
-Alt V:                       Paste
+Alt V:                       Paste    
 
 Alt Shift O:                 Show10XOutput
 
