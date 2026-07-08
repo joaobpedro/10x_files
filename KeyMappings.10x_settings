@@ -357,10 +357,10 @@ Alt F2:                      NextBookmarkInFile
 Control Shift F2:            RemoveAllBookmarksFromFile
 
 # Go to the previus result in the last search or build operation
-Shift F4:                    GotoPrevResult
+Shift Alt N:                    GotoPrevResult
 
 # Go to the next result in the last search or build operation
-F4:                          GotoNextResult
+Alt N:                          GotoNextResult
 
 # Re-open the most recently closed file
 Control Shift T:             RestoreRecentlyClosedFile
@@ -459,10 +459,10 @@ Control Shift Left:          MoveCursorPrevWordSelect
 Control Shift Right:         MoveCursorNextWordSelect
 
 # Scroll one line up
-Control Up:                  ScrollOneLineUp
+#Control Up:                  ScrollOneLineUp
 
 # Scroll one line down
-Control Down:                ScrollOneLineDown
+#Control Down:                ScrollOneLineDown
 
 # Move up by a page
 PageUp:                      PageUp
@@ -480,7 +480,7 @@ Shift PageDown:              SelectPageDown
 Control K, Control I:        ShowSymbolInfo
 
 # Internet search for the current word or selection using the InternetSearchCommand setting
-F1:                          InternetSearch
+#F1:                          InternetSearch
 
 # Zoom in on editor text (increase font size)
 #Control Shift .:             ZoomIn
@@ -549,7 +549,10 @@ Control Shift A:             NewSearchPanel
 Control Shift I:             ShowTerminal
 
 #-------------------------------------------------------------------------
-# Custom shortcurts             
+# Custom shortcurts
+# base: Alt is the mod key
+# alternative: Alt Shift as mod
+#-------------------------------------------------------------------------
 Alt X:                       ToggleCheckbox
                              
 Alt Shift X:                 RemoveCheckbox
@@ -569,4 +572,5 @@ Alt Shift O:                 Show10XOutput
 Alt Shift P:				 SelectParagraph
 
 Control Up:                  MoveCursorParagraphUp
+
 Control Down:                MoveCursorParagraphDown
