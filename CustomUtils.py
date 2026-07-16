@@ -1,5 +1,14 @@
+# NOTE: this is an entrance for the things I need to implement
+#
+#------------------------------------------------------------------------
+# List of things that I want on my editor:
+#   - gather all TODOS and NOTES from a project and pipe it to the build output
+#   - this is working grest now :)
+#------------------------------------------------------------------------
+
 import N10X
 import re ## regular expressions, super handy for things with text
+import os
 
 #------------------------------------------------------------------------
 def ToggleCheckbox():
@@ -576,7 +585,6 @@ def MoveCursorParagraphDown():
 # 3. Get coordinates of those lines
 # 4. Set selection command for the coordinates
 #------------------------------------------------------------------------
-
 def SelectParagraph():
     if not N10X.Editor.TextEditorHasFocus():
         return;
@@ -614,3 +622,76 @@ def SelectParagraph():
     N10X.Editor.SetSelection((0, target_up_y), (last_line_length, target_down_y), cursor_index=0)
 
     return
+#------------------------------------------------------------------------
+# need to get all the todos
+# 1. get all the files in the workspace
+# 2. go throught the files to get the 
+# 3. need to compile the regex expression
+# 4. search each file and send message to the Build panel
+#------------------------------------------------------------------------
+def OnTodoSearchFinished(results, truncated):
+    """Callback fired by 10x when the native workspace search completes."""
+    # 1. Prepare the Build Panel
+    N10X.Editor.ClearBuildOutput()
+    N10X.Editor.ShowBuildOutput()
+
+    if not results:
+        N10X.Editor.LogToBuildOutput("=== No TODOs found in the workspace ===\n")
+        N10X.Editor.SetStatusBarText("TODO Search: 0 matches found.")
+        return
+
+    N10X.Editor.LogToBuildOutput(f"=== Workspace TODOs ({len(results)} found) ===\n")
+    
+
+    #get the root folder
+    workspace_path = N10X.Editor.GetWorkspaceFilename()
+    if not workspace_path:
+        N10X.Editor.LogTo10XOutput("Error: No workspace currently open.")
+        return
+    root_folder = os.path.normpath(os.path.dirname(workspace_path))
+
+    root_results = []
+    if results:
+        for item in results:
+            filename = item[0] # item[0] is the absolute file path
+            file_dir = os.path.normpath(os.path.dirname(filename))
+
+            print("File dir = ", file_dir)
+            print("Root dir  = ", root_folder)
+            
+            # If the file's directory exactly matches the root directory, keep it!
+            if file_dir == root_folder:
+                root_results.append(item)
+
+    # 2. Format the results as compiler information lines
+    for filename, char_index, line_index, line_text in root_results:
+        clean_text = line_text.strip()
+        # The formatting "file(line): info: text" makes it clickable in the build panel
+        formatted_line = f"{filename}({line_index + 1}): info: {clean_text}\n"
+        N10X.Editor.LogToBuildOutput(formatted_line)
+
+    if truncated:
+        N10X.Editor.LogToBuildOutput("\n... [Warning: Results truncated by search limit] ...\n")
+        
+    N10X.Editor.LogToBuildOutput("=== Scan Completed ===")
+    
+    # 3. Tell 10x to parse the text so the links become active
+    N10X.Editor.ParseBuildOutput()
+    N10X.Editor.SetStatusBarText(f"TODO Search complete. Found {len(results)} items.")
+
+
+
+# TODO: need to make this to work only with my files, need to provide a list of files?
+# to be assessed but this seems promissing
+def FindWorkspaceTodosNative():
+    """Main function to bind to your keyboard."""
+    N10X.Editor.SetStatusBarText("Searching workspace for TODOs...")
+    
+    # Fire the asynchronous native search for "TODO" (case-insensitive)
+    N10X.Editor.FindTextInFiles(
+        "TODO:", 
+        OnTodoSearchFinished, 
+        True,     # Catches TODO, todo, ToDo
+        False, 
+        False
+    )
