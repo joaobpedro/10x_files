@@ -4,7 +4,8 @@
 # List of things that I want on my editor:
 #   X gather all TODOS and NOTES from a project and pipe it to the build output
 #   X this is working grest now :)
-#   - delete current work
+#   X delete current work
+#   - make an increment list items like the Vim thing
 #------------------------------------------------------------------------
 
 import N10X
@@ -625,10 +626,10 @@ def SelectParagraph():
     return
 #------------------------------------------------------------------------
 # need to get all the todos
-# 1. get all the files in the workspace
-# 2. go throught the files to get the 
-# 3. need to compile the regex expression
-# 4. search each file and send message to the Build panel
+# 1. use the 10X workspace search
+# 2. go through the files and filter out the ones that are not in the
+#    worksapce root
+# 3. send each remaining file to the build panel
 #------------------------------------------------------------------------
 def OnTodoSearchFinished(results, truncated):
     """Callback fired by 10x when the native workspace search completes."""
@@ -682,8 +683,6 @@ def OnTodoSearchFinished(results, truncated):
 
 
 
-# TODO: need to make this to work only with my files, need to provide a list of files?
-# to be assessed but this seems promissing
 def ListTodos():
     """Main function to bind to your keyboard."""
     N10X.Editor.SetStatusBarText("Searching workspace for TODOs...")
