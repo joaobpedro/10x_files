@@ -2,8 +2,9 @@
 #
 #------------------------------------------------------------------------
 # List of things that I want on my editor:
-#   - gather all TODOS and NOTES from a project and pipe it to the build output
-#   - this is working grest now :)
+#   X gather all TODOS and NOTES from a project and pipe it to the build output
+#   X this is working grest now :)
+#   - delete current work
 #------------------------------------------------------------------------
 
 import N10X
@@ -695,3 +696,12 @@ def FindWorkspaceTodosNative():
         False, 
         False
     )
+
+#------------------------------------------------------------------------
+def DeleteWord():
+    if not N10X.Editor.TextEditorHasFocus():
+        return
+    N10X.Editor.PushUndoGroup()
+    N10X.Editor.ExecuteCommand("SelectCurrentWord")
+    N10X.Editor.ExecuteCommand("Delete")
+    N10X.Editor.PopUndoGroup()
