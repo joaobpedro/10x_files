@@ -684,7 +684,7 @@ def OnTodoSearchFinished(results, truncated):
 
 # TODO: need to make this to work only with my files, need to provide a list of files?
 # to be assessed but this seems promissing
-def FindWorkspaceTodosNative():
+def ListTodos():
     """Main function to bind to your keyboard."""
     N10X.Editor.SetStatusBarText("Searching workspace for TODOs...")
     
