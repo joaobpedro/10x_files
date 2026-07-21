@@ -5,13 +5,15 @@
 #   X gather all TODOS and NOTES from a project and pipe it to the build output
 #   X this is working grest now :)
 #   X delete current work
-#   - make an increment list items like the Vim thing
+#   X make an increment list items like the Vim thing
 #------------------------------------------------------------------------
 
 import N10X
 import re ## regular expressions, super handy for things with text
 import os
 
+#------------------------------------------------------------------------
+# make this multi-cursor friendly
 #------------------------------------------------------------------------
 def ToggleCheckbox():
     """
@@ -704,3 +706,43 @@ def DeleteWord():
     N10X.Editor.ExecuteCommand("SelectCurrentWord")
     N10X.Editor.ExecuteCommand("Delete")
     N10X.Editor.PopUndoGroup()
+
+
+#------------------------------------------------------------------------
+# Increment list:
+# there a limitation that it assumes that all numbers have the same number
+# of digits of the 1st number.
+#------------------------------------------------------------------------
+
+def IncrementList():
+    # get cursors
+    number_of_cursors = N10X.Editor.GetCursorCount();
+
+    first_number = int(N10X.Editor.GetSelection().split('\n')[0]);
+    print(first_number)
+    
+    cursor_positions = [];
+    # get cursor positions
+    for cursor in range(0, number_of_cursors):
+        cursor_positions.append(N10X.Editor.GetCursorPos(cursor));
+
+    # need to order the cursors
+    sorted_cursors = sorted(cursor_positions)
+
+    print(sorted_cursors)
+
+    #clear multicursor
+    N10X.Editor.ClearMultiCursors();
+
+    increment = 0;
+    for cursor_position in sorted_cursors:
+        number_to_insert = first_number + increment;
+        x, y = cursor_position;
+        length = len(str(first_number));
+        print("length = ", length)
+        N10X.Editor.SetCursorPos((x-length, y));
+        for i in range(1, length+1):
+            N10X.Editor.ExecuteCommand("Delete");
+        N10X.Editor.InsertText(str(number_to_insert));
+        increment += 1;
+    
