@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------
 # List of things that I want on my editor:
 #   X gather all TODOS and NOTES from a project and pipe it to the build output
-#   X this is working grest now :)
+#   X this is working great now :)
 #   X delete current work
 #   X make an increment list items like the Vim thing
 #------------------------------------------------------------------------
@@ -15,12 +15,11 @@ import os
 #------------------------------------------------------------------------
 # make this multi-cursor friendly
 #------------------------------------------------------------------------
+# Adds [ ] if none exists.
+# Changes [ ] to [x] if complete.
+# Changes [x] to [ ] if imcomplete.
 def ToggleCheckbox():
-    """
-    Adds [ ] if none exists.
-    Changes [ ] to [x] if complete.
-    Changes [x] to [ ] if imcomplete.
-    """
+
     line_index = N10X.Editor.GetCursorPos()[1]
     line_text = N10X.Editor.GetLine(line_index)
     
@@ -48,10 +47,9 @@ def ToggleCheckbox():
     N10X.Editor.SetLine(line_index, new_line)
 
 #------------------------------------------------------------------------
+# Removes any markdown checkbox or bullet from the start of the line.
 def RemoveCheckbox():
-    """
-    Removes any markdown checkbox or bullet from the start of the line.
-    """
+
     line_index = N10X.Editor.GetCursorPos()[1]
     line_text = N10X.Editor.GetLine(line_index)
     
@@ -713,7 +711,6 @@ def DeleteWord():
 # there a limitation that it assumes that all numbers have the same number
 # of digits of the 1st number.
 #------------------------------------------------------------------------
-
 def IncrementList():
     # get cursors
     number_of_cursors = N10X.Editor.GetCursorCount();
