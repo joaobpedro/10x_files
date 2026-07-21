@@ -1,0 +1,106 @@
+# Format: <SettingName>: <Settingvalue>
+# Setting name must appear at start of line and there must be whitespace after the colon.
+
+# --- UI & Panels ---
+UI.UI:                                            24, 24, 24
+UI.UI Text:                                       235, 235, 235
+UI.UI Selected Text:                              255, 255, 255
+UI.UI Selected Item:                              60, 64, 67
+UI.Menu:                                          24, 24, 24
+UI.Menu (highlighted):                            34, 34, 34
+UI.Menu (selected):                               34, 34, 34
+UI.App Border (active):                           60, 64, 67
+UI.App Border (inactive):                         24, 24, 24
+UI.Panels.Active Tab:                             34, 34, 34
+UI.Panels.Active Tab Text:                        235, 235, 235
+UI.Panels.Inactive Tab Text:                      119, 119, 119
+UI.Panels.Inactive Tab:                           24, 24, 24
+UI.Panels.Scrollbar Background:                   24, 24, 24
+UI.Panels.Scrollbar Bar:                          60, 64, 67
+UI.Panels.Scrollbar Bar (hover):                  99, 99, 99
+UI.Panels.Scrollbar Bar (drag):                   119, 119, 119
+UI.Panels.MapScrollbar Bar:                       default
+
+# --- Trees & Lists ---
+UI.SearchHighlight:                               default
+UI.WorkspaceTreeNode:                             default
+UI.ActiveWorkspaceTreeNode:                       60, 64, 67
+UI.WorkspaceTreeNodeBorder:                       0, 0, 0
+UI.ActiveWorkspaceTreeNodeBorder:                 default
+UI.SourceFileTreeNode:                            235, 235, 235
+UI.HeaderFileTreeNode:                            235, 235, 235
+UI.MiscFileTreeNode:                              119, 119, 119
+UI.FolderTreeNode:                                132, 182, 235
+UI.SelectedSearchResultLine:                      default
+TreeNodeText:                                     235, 235, 235
+
+# --- Editor Core ---
+Editor.Text:                                      235, 235, 235
+Editor.Background:                                24, 24, 24
+Editor.Cursor:                                    15, 255, 10
+Editor.Current Line:                              25, 35, 90
+Editor.Selection Back:                            60, 64, 67
+Editor.Selection Fore:                            default
+Editor.Find.Text Highlight:                       60, 64, 67
+Editor.Find.Bracket Highlight:                    99, 99, 99
+Editor.Rename Symbol Back:                        60, 64, 67
+Editor.Rename Symbol Fore:                        255, 255, 255
+Editor.Line Numbers:                              99, 99, 99
+Editor.Margin:                                    24, 24, 24
+Editor.SymbolHighlight:                           60, 64, 67
+Editor.WordHighlight:                             default
+Editor.Whitespace:                                60, 64, 67
+Editor.LineEndings:                               60, 64, 67
+Editor.IndentLine:                                34, 34, 34
+Editor.VerticalRulers:                            34, 34, 34
+
+# --- True Cloud9 Syntax Highlighting ---
+Language.Text:                                    235, 235, 235
+Language.Background:                              24, 24, 24
+
+# The Core Cloud9 Colors
+Language.Number:                                  214, 166, 94
+Language.Keyword:                                 132, 182, 235
+Language.ControlFlowKeyword:                      132, 182, 235
+Language.NewDeleteKeyword:                        132, 182, 235
+Language.UsingKeyword:                            132, 182, 235
+Language.LiteralKeyword:                          132, 182, 235
+Language.String:                                  135, 195, 138
+Language.Comment:                                 119, 119, 119
+Language.DocComment:                              119, 119, 119
+Language.BlockComment:                            119, 119, 119
+Language.Preprocessor:                            132, 182, 235
+
+# Everything else defaults to the light-grey foreground 
+Language.Type:                                    235, 235, 235
+Language.Class:                                   235, 235, 235
+Language.Function:                                235, 235, 235
+Language.MemberFunction:                          235, 235, 235
+Language.Variable:                                235, 235, 235
+Language.MemberVariable:                          235, 235, 235
+Language.Enum:                                    235, 235, 235
+Language.Namespace:                               235, 235, 235
+Language.Typedef:                                 235, 235, 235
+Language.Operator:                                235, 235, 235
+Language.Brace:                                   235, 235, 235
+Language.Bracket:                                 235, 235, 235
+Language.SquareBracket:                           235, 235, 235
+Language.SemiColon:                               235, 235, 235
+Language.Comma:                                   235, 235, 235
+
+# Misc
+Language.Enum Value:                              214, 166, 94
+Language.DefinedOut:                              119, 119, 119
+
+# --- Tags & System Markers ---
+Todo:                                             214, 166, 94
+Fixme:                                            237, 41, 57
+Note:                                             132, 182, 235
+Hardcoded:                                        132, 182, 235
+Important:                                        237, 41, 57
+UI.UpdatedLine:                                   135, 195, 138
+UI.SavedLine:                                     default
+Editor.ErrorUnderline:                            237, 41, 57
+Editor.WarningUnderline:                          214, 166, 94
+Build.BuildError:                                 237, 41, 57
+Build.BuildWarning:                               214, 166, 94
