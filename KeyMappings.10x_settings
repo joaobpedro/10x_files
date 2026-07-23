@@ -569,8 +569,14 @@ Alt V:                       Paste
 
 Alt Shift O:                 Show10XOutput
 
+Alt Shift B:				 ShowBuildOutput
+
 Alt Shift P:				 SelectParagraph
 
 Control Up:                  MoveCursorParagraphUp
 
 Control Down:                MoveCursorParagraphDown
+
+Alt W:						 DeleteWord
+
+Alt I:                       IncrementList
