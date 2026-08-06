@@ -383,7 +383,7 @@ Language.Italic:                                  244, 244, 255
 Language.Blockquote:                              204, 140, 60
 
 # Document list item
-Language.ListItem:                                255, 221, 51
+Language.ListItem:                                228, 228, 239
 
 # Url Link
 Language.Link:                                    150, 166, 200
