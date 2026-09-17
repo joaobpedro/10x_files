@@ -11,7 +11,7 @@ UI.Menu (highlighted):                            34, 34, 34
 UI.Menu (selected):                               34, 34, 34
 UI.App Border (active):                           60, 64, 67
 UI.App Border (inactive):                         24, 24, 24
-UI.Panels.Active Tab:                             100, 100, 100
+UI.Panels.Active Tab:                             90, 90, 60
 UI.Panels.Active Tab Text:                        235, 235, 235
 UI.Panels.Inactive Tab Text:                      200, 200, 200
 UI.Panels.Inactive Tab:                           24, 24, 24
@@ -64,9 +64,9 @@ Language.Background:                              24, 24, 24
 Language.Number:                                  214, 166, 94
 Language.Keyword:                                 130, 150, 150
 Language.ControlFlowKeyword:                      130, 150, 150
-Language.NewDeleteKeyword:                        132, 182, 235
-Language.UsingKeyword:                            132, 182, 235
-Language.LiteralKeyword:                          132, 182, 235
+Language.NewDeleteKeyword:                        112, 162, 190
+Language.UsingKeyword:                            112, 162, 190
+Language.LiteralKeyword:                          112, 162, 190
 Language.String:                                  135, 160, 135
 Language.Comment:                                 95, 120, 95
 Language.DocComment:                              95, 120, 95
