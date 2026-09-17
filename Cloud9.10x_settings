@@ -7,8 +7,8 @@ UI.UI Text:                                       235, 235, 235
 UI.UI Selected Text:                              100, 100, 100
 UI.UI Selected Item:                              60, 64, 67
 UI.Menu:                                          24, 24, 24
-UI.Menu (highlighted):                            34, 34, 34
-UI.Menu (selected):                               34, 34, 34
+UI.Menu (highlighted):                            90, 90, 60
+UI.Menu (selected):                               90, 90, 60
 UI.App Border (active):                           60, 64, 67
 UI.App Border (inactive):                         24, 24, 24
 UI.Panels.Active Tab:                             90, 90, 60
@@ -20,6 +20,8 @@ UI.Panels.Scrollbar Bar:                          60, 64, 67
 UI.Panels.Scrollbar Bar (hover):                  99, 99, 99
 UI.Panels.Scrollbar Bar (drag):                   119, 119, 119
 UI.Panels.MapScrollbar Bar:                       default
+UI.LogoBack:                                      90, 90, 60
+UI.LogoFore:                                      default
 
 # --- Trees & Lists ---
 UI.SearchHighlight:                               default
