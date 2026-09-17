@@ -4,7 +4,7 @@
 # --- UI & Panels ---
 UI.UI:                                            24, 24, 24
 UI.UI Text:                                       235, 235, 235
-UI.UI Selected Text:                              255, 255, 255
+UI.UI Selected Text:                              100, 100, 100
 UI.UI Selected Item:                              60, 64, 67
 UI.Menu:                                          24, 24, 24
 UI.Menu (highlighted):                            34, 34, 34
@@ -39,8 +39,8 @@ Editor.Text:                                      235, 235, 235
 Editor.Background:                                24, 24, 24
 Editor.Cursor:                                    15, 255, 10
 Editor.Current Line:                              25, 35, 90
-Editor.Selection Back:                            60, 64, 67
-Editor.Selection Fore:                            default
+Editor.Selection Back:                            60, 100, 120
+Editor.Selection Fore:                            200, 200, 200
 Editor.Find.Text Highlight:                       60, 64, 67
 Editor.Find.Bracket Highlight:                    99, 99, 99
 Editor.Rename Symbol Back:                        60, 64, 67
