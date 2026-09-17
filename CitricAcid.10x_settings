@@ -1,0 +1,96 @@
+UI.UI:                                            0, 0, 0
+UI.UI Text:                                       248, 248, 242
+UI.UI Selected Text:                              0, 150, 150
+UI.UI Selected Item:                              0, 128, 151
+UI.Menu:                                          0, 0, 0
+UI.Menu (highlighted):                            21, 21, 21
+UI.Menu (selected):                               21, 21, 21
+UI.App Border (active):                           21, 21, 21
+UI.App Border (inactive):                         0, 0, 0
+UI.Panels.Active Tab:                             21, 21, 21
+UI.Panels.Active Tab Text:                        248, 248, 242
+UI.Panels.Inactive Tab Text:                      115, 123, 132
+UI.Panels.Inactive Tab:                           0, 0, 0
+UI.Panels.Scrollbar Background:                   0, 0, 0
+UI.Panels.Scrollbar Bar:                          21, 21, 21
+UI.Panels.Scrollbar Bar (hover):                  115, 123, 132
+UI.Panels.Scrollbar Bar (drag):                   200, 215, 232
+UI.Panels.MapScrollbar Bar:                       default
+
+# --- Trees & Lists ---
+UI.SearchHighlight:                               255, 231, 146
+UI.WorkspaceTreeNode:                             default
+UI.ActiveWorkspaceTreeNode:                       0, 128, 151
+UI.WorkspaceTreeNodeBorder:                       0, 0, 0
+UI.ActiveWorkspaceTreeNodeBorder:                 default
+UI.SourceFileTreeNode:                            248, 248, 242
+UI.HeaderFileTreeNode:                            248, 248, 242
+UI.MiscFileTreeNode:                              115, 123, 132
+UI.FolderTreeNode:                                0, 168, 198
+UI.SelectedSearchResultLine:                      default
+TreeNodeText:                                     248, 248, 242
+
+# --- Editor Core ---
+Editor.Text:                                      248, 248, 242
+Editor.Background:                                0, 0, 0
+Editor.Cursor:                                    0, 255, 0
+Editor.Current Line:                              15, 35, 90
+Editor.Selection Back:                            0, 128, 151
+Editor.Selection Fore:                            255, 255, 255
+Editor.Find.Text Highlight:                       255, 150, 146
+Editor.Find.Bracket Highlight:                    78, 205, 196
+Editor.Rename Symbol Back:                        0, 128, 151
+Editor.Rename Symbol Fore:                        255, 255, 255
+Editor.Line Numbers:                              115, 123, 132
+Editor.Margin:                                    0, 0, 0
+Editor.SymbolHighlight:                           0, 128, 151
+Editor.WordHighlight:                             default
+Editor.Whitespace:                                59, 58, 50
+Editor.LineEndings:                               59, 58, 50
+Editor.IndentLine:                                21, 21, 21
+Editor.VerticalRulers:                            21, 21, 21
+
+# --- FreshCut Contrast Syntax Highlighting ---
+Language.Text:                                    100, 100, 100
+Language.Background:                              0, 0, 0
+Language.Number:                                  143, 190, 0
+Language.Keyword:                                 200, 215, 232
+Language.ControlFlowKeyword:                      200, 215, 232
+Language.NewDeleteKeyword:                        200, 215, 232
+Language.UsingKeyword:                            200, 215, 232
+Language.LiteralKeyword:                          0, 168, 198
+Language.Type:                                    78, 205, 196
+Language.Preprocessor:                            248, 248, 242
+Language.Comment:                                 115, 123, 132
+Language.DocComment:                              115, 123, 132
+Language.BlockComment:                            115, 123, 132
+Language.Brace:                                   248, 248, 242
+Language.Bracket:                                 248, 248, 242
+Language.SquareBracket:                           248, 248, 242
+Language.SemiColon:                               248, 248, 242
+Language.Operator:                                200, 215, 232
+Language.String:                                  203, 208, 0
+Language.Comma:                                   248, 248, 242
+Language.Class:                                   248, 248, 242
+Language.Function:                                200, 200, 242
+Language.MemberFunction:                          248, 248, 242
+Language.Enum:                                    248, 248, 242
+Language.Enum Value:                              248, 248, 242
+Language.Variable:                                248, 248, 242
+Language.MemberVariable:                          248, 248, 242
+Language.Namespace:                               248, 248, 242
+Language.Typedef:                                 248, 248, 242
+Language.DefinedOut:                              115, 123, 132
+
+# --- Tags & System Markers ---
+Todo:                                             247, 184, 61
+Fixme:                                            230, 31, 68
+Note:                                             0, 168, 198
+Hardcoded:                                        0, 168, 198
+Important:                                        230, 31, 68
+UI.UpdatedLine:                                   247, 184, 61
+UI.SavedLine:                                     167, 218, 30
+Editor.ErrorUnderline:                            230, 31, 68
+Editor.WarningUnderline:                          247, 184, 61
+Build.BuildError:                                 230, 31, 68
+Build.BuildWarning:                               247, 184, 61

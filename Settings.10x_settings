@@ -1,0 +1,754 @@
+ # Format: <SettingName>: <Settingvalue>
+# Setting name must appear at start of line and there must be whitespace after the colon.
+# Multiple values can be comma separated or on subsequent lines.
+
+# 
+# General
+# 
+
+# Open the last workspace opened when starting 10x
+OpenLastWorkspaceOnStartup:            false
+
+# Path of the Visual Studio VsDevCmd.bat or vcvars64.bat batch file to use for setting the Visual Studio build environment. Restart 10X after changing this value. Set to 'auto' to let 10x try and find the path. For 10x workspaces make sure the "Use Visual Studio Build Environment" workspace setting is checked.
+# Valid values: path
+VisualStudioEnvBat:                    C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat
+
+# Path of the Visual Studio install. Used to find the VisualStudioEnvBat path and to start the VS debugger. eg C:\Program Files (x86)\Microsoft Visual Studio\2019\Community. Set to `default` to automatically find the path to the latest installed VS. Requires restart of 10x.
+# Valid values: path
+VisualStudioInstallPath:               default
+
+# Sync breakpoints and current config with Visual Studio
+VisualStudioSync:                      true
+
+# How often to backup unsaved files (ms)
+FileBackupFrequency:                   5000
+
+# Crash dump mode. Restart 10x for this to take effect
+# Valid values: Mini, MiniWithHeap, Full
+CrashDumpMode:                         MiniWithHeap
+
+# The internet search engine command. Search word will be appended to this command.
+# Valid values: url
+InternetSearchCommand:                 https://www.google.com/search?q=
+
+# Autosave 10x workspace files as soon as changes are made
+AutosaveWorkspace:                     false
+
+# Open the previously opened files on startup when no workspace is open
+RememberOpenFiles:                     false
+
+# If true then it won't prompt to save unsaved files and they will be restored on restart
+RestoreUnsavedFiles:                   false
+
+# Take the name of the file from the first word typed
+AutoNameUntitledFiles:                 false
+
+# Regular expression used to detect warning lines in the output panel
+# Valid values: regex
+OutputPanelWarningRegex:               \[warning\]
+
+# Regular expression used to detect error lines in the output panel
+# Valid values: regex
+OutputPanelErrorRegex:                 \[error\:w]
+
+# Save all files when 10x loses focus
+SaveAllOnLoseFocus:                    false
+
+# SaveAs dialog will use the path of the previously focused file
+SaveAsUsesPrevPanelPath:               true
+
+# The default line ending to use for new files
+# Valid values: LF, CRLF
+DefaultLineEnding:                     CRLF
+
+# Update to the early access builds. Builds are released on early access before general release.
+EarlyAccessUpdates:                    true
+
+# The default encoding for new files
+DefaultEncoding:                       UTF-8
+
+# Comma separated list of extra folders to add to the workspace (only for sln workspaces). Paths should be wildcard paths. For example MyFolder\**\*.* 10x will look for MyFolder in the workspace root. \**\ means recursively add files.
+AdditionalWorkspaceFolders:            
+
+# List of folders for 10x python scripts. Paths can be absolute or relative to the current workspace folder.
+PythonScriptsFolders:                  
+
+
+# 
+# Accessibility
+# 
+
+# Enable accessibility text to speech
+TextToSpeech:                          false
+
+# Enable Accessibility (NVDA)
+EnableAccessibility:                   false
+
+# 
+# Fonts
+# 
+
+# The main UI font for 10X.
+# Can be the font name, the name of the ttf file in a system fonts
+# folder or the full path to a ttf file.
+# Valid values: font
+UIFont:                                Segoe UI
+
+# The main UI font size.
+# Usually it's best to keep this as default and let 10x decide the font size.
+# If you want to change the font size it's usually better to change the UIScale setting.
+# Valid values: float, default
+UIFontSize:                            default
+
+# Use 'Horizontal' for standard sub-pixel rendering, 'None' to disable.
+# Use VerticalLeft if you have your monitor orientated vertically on its
+# left side, and VerticalRight if orientated on the right side.
+# Valid values: None, Horizontal, VerticalLeft, VerticalRight
+FontSubPixelRenderingMode:             Horizontal
+
+# Gamma value for font rendering
+FontGamma:                             2.2
+
+# The font for all text editor windows.
+# Can be the font name, the name of the ttf file in a system fonts
+# folder or the full path to a ttf file.
+# Only supports fixed width fonts.
+# Valid values: font
+EditorFont:                            JetBrains Mono Medium
+
+# The font size for all text editor windows
+EditorFontSize:                        11
+
+# The font for all tool windows. Set to Default to use the EditorFont setting.
+# Can be the font name, the name of the ttf file in a system fonts
+# folder or the full path to a ttf file.    
+# Only supports fixed width fonts.
+# Valid values: font
+ToolFont:                              JetBrains Mono Medium
+
+# The font size for all tool windows. Set to default to use the EditorFontSize setting
+ToolFontSize:                          default
+
+# The font for the output panels. Set to Default to use the ToolFont setting.
+# Can be the font name, the name of the ttf file in a system fonts
+# folder or the full path to a ttf file.
+# Only supports fixed width fonts.
+# Valid values: font
+OutputPanelFont:                       default
+
+# The font size for the output panels. Set to default to use the ToolFontSize setting
+OutputPanelFontSize:                   default
+
+# The font for the status bar. Set to Default to use the EditorFont setting.
+# Can be the font name, the name of the ttf file in a system fonts
+# folder or the full path to a ttf file.
+# Only supports fixed width fonts.
+# Valid values: font
+StatusBarFont:                         default
+
+# The font size for the status bar. Set to default to use the UIFontSize setting
+StatusBarFontSize:                     default
+
+# Extra spacing between lines (multiple of line height)
+VerticalLineGap:                       1.0
+
+# The font for terminals. Set to Default to use the ToolFont setting.
+# Can be the font name, the name of the ttf file in a system fonts
+# folder or the full path to a ttf file.
+# Only supports fixed width fonts.
+TerminalFont:                          JetBrains Mono Medium
+
+# The font size for the output panels. Set to default to use the ToolFontSize setting
+TerminalFontSize:                      default
+
+# Enable or disable code font ligatures
+UseLigatures:                          true
+
+
+# 
+# UI
+# 
+
+# The main UI Scale. Set to 1 for 100% scaling, 1.5 for 150% etc. Set to 'auto' to use the OS scale.
+# Valid values: float, auto
+UIScale:                               auto
+
+# The current color scheme for all UI elements. Can be 'default'
+ColorScheme:                           Cloud9
+
+# Hide the main menu when not in use. Mouse Over to make visible.
+HideMainMenu:                          true
+
+# Hide the menu for scondary windows when not in use. Mouse Over to make visible.
+HideSecondaryMenu:                     true
+
+# Show the main app menu when the mouse hovers over
+ShowMainMenuOnMouseHover:              true
+
+# Show the app menu when the mouse hovers over for secondary windows
+ShowSecondaryMenuOnMouseHover:         false
+
+# Whether to toggle the main menu on the alt key
+ToggleMainMenuOnAlt:                   true
+
+# How to show the workspace in the title bar if the menu is hidden (None, Name, Path)
+# Valid values: None, Name, Path, FolderAndName
+WorkspaceTextInTitleBar:               Path
+
+# How to name the window from the workspace (Name, Path)
+# Valid values: Name, Path, FolderAndName
+WindowTitle:                           Name
+
+# Show line numbers (true, false)
+ShowLineNumbers:                       true
+
+# Resize the line numbers column to show line numbers this many chars wide
+MinLineNumberWidth:                    3
+
+# Show line numbers relative to the current line
+RelativeLineNumbers:                   false
+
+# Show the collapse expand margin (true, false)
+ShowCollapseRegionMargin:              true
+
+# Margin width
+MarginWidth:                           16
+
+# Width of the line markers (bookmarks, breakpoints etc)
+LineMarkerWidth:                       16
+
+# True to toggle breakpoints in the margin with the mouse
+ToggleBreakpointsWithMouse:            true
+
+# Cursor blink rate. Time in ms between blinks. Can be set to auto to use the OS blick rate. Set to 0 to disable.
+# Valid values: int, auto
+CursorBlinkRate:                       auto
+
+# Ctrl+tab switch file mode. Can be set to all files or restricted to files open in the current panel
+# Valid values: All, Panel
+SwitchFileMode:                        All
+
+# The tab panel mode. Top, Left or Right
+# Valid values: Top, Left, Right
+TabPanelMode:                          Top
+
+# The maximum number of tabs to keep open
+MaxOpenTabs:                           100
+
+# Use backslashes in paths
+BackslashPaths:                        true
+
+# Reopen a file in the current panel even if it already open in a different panel
+ReopenFileInCurrentPanel:              false
+
+# If the file hasn't been opened before open it in the currently active panel
+OpenFileInActivePanel:                 false
+
+# Remember the panel position of the file when it is closed
+RememberFilePanelPos:                  false
+
+# Show indent lines
+ShowIndentGuideLines:                  true
+
+# Comma separated list of columns for ruler lines
+# Valid values: int list (comma separated)
+VerticalRulers:                        
+
+# How to set the initial text when the find text panel is shown. Current means use the current word, Selected means use the current selection. Values: (None, Current, Selection)
+# Valid values: None, Current, Selection
+FindTextInitialValue:                  Current
+
+# If enabled, left/right cursor keys move between text boxes and buttons in the find and find/replace panels
+FindPanelCursorKeys:                   true
+
+# Close the find panel when the Enterkey is pressed
+CloseFindPanelOnEnter:                 false
+
+# True to put the cursor at the start of the selected find text instead of the end
+ReverseFindSelection:                  false
+
+# Show the match count in the find panel text box
+ShowFindTextMatchCount:                true
+
+# How to set the initial text when the find/replace text panel is shown. Current means use the current word, Selected means use the current selection. Values: (None, Current, Selection)
+# Valid values: None, Current, Selection
+ReplaceTextInitialValue:               Current
+
+# True will smoothly interpolate the scroll position. False will scroll in by line.
+SmoothScroll:                          true
+
+# Speed of the smooth scroll interpolation
+SmoothScrollSpeed:                     50
+
+# The width of the map scroll bar
+MapScrollBarWidth:                     60
+
+# Scroll bar mode for code text editor panels
+# Valid values: Standard, Map
+ScrollBarMode:                         Map
+
+# Highlight the current find text in the scroll bar
+HighlightFindTextInScrollBar:          true
+
+# Highlight the currently selected word in the scroll bar
+HighlightSelectedWordInScrollBar:      true
+
+# Size of the scroll bar highlights
+ScrollBarHighlightSize:                1.0
+
+# Show breakpoints in scroll bar
+ShowBreakpointsInScrollBar:            false
+
+# Show bookmarks in scroll bar
+ShowBookmarksInScrollBar:              false
+
+# Show updated lines in the margin
+ShowUpdatedLinesInMargin:              true
+
+# Show updated lines in scroll bar
+ShowUpdatedLinesInScrollBar:           true
+
+# Always centre floating panels horizontally
+CentreFloatingPanelsHorz:              true
+
+# Always centre floating panels vertically
+CentreFloatingPanelsVert:              true
+
+# Vertical mouse wheel sensitivity
+VerticalMouseWheelSensitivity:         1.0
+
+# Horizontal mouse wheel sensitivity
+HorizontalMouseWheelSensitivity:       1.0
+
+# True to enable zooming the font with the control + mouse wheel
+MouseWheelZoom:                        false
+
+# Number of lines scroll wheel scrolls
+MouseWheelScrollStep:                  3
+
+# True to open files in the column specified by the Column0Presets, Column1Presets, Column2Presets settings
+UseColumnPresets:                      true
+
+# File wildcards for files that should automatically open in column 1. Separated by commas.
+# Valid values: wildcard list (comma separated)
+Column0Presets:                        *.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl
+
+# File wildcards for files that should automatically open in column 0. Separated by commas.
+# Valid values: wildcard list (comma separated)
+Column1Presets:                        *.c,*.cc,*.cpp,*.c++,*.cp,*.cxx
+
+# File wildcards for files that should automatically open in column 2. Separated by commas.
+# Valid values: wildcard list (comma separated)
+Column2Presets:                        *.bat,*.py
+
+# Gap to the right of columns
+ColumnGap:                             0
+
+# Hide the symbol hover box when any key is pressed
+HideHoverBoxOnKeyPress:                true
+
+# Show the hover box when the mouse moves over a symbol
+ShowSymbolHoverBoxOnMouseOver:         true
+
+# Hide the mouse cursor while typing
+HideMouseCursorWhileTyping:            false
+
+# When a tool panel is pulled out into a separate window submitting or pressing escape will close the panel
+AutoCloseFloatingToolWindows:          true
+
+# Track the active file in the workspace tree
+TrackActiveFileInWorkspaceTree:        false
+
+# Controls whether move to prev/next word (ctrl+left/right) selects to the word start or end. auto chooses based on direction.
+# Valid values: WordStart, WordEnd, auto
+MoveToNextWordMode:                    WordStart
+
+# Controls whether select prev/next word (ctrl+shift+left/right) selects to the word start or end. auto chooses based on direction.
+# Valid values: WordStart, WordEnd, auto
+SelectNextWordMode:                    WordStart
+
+# 
+# Edit
+# 
+
+# How to display the cursor (caret) in the text editor. Values: (Line, Block, Underscore)
+# Valid values: Line, Block, Underscore, HalfBlock
+CursorMode:                            Block
+
+# Width of a tab in chars
+TabWidth:                              4
+
+# Whether lines should be indented with tabs or spaces
+# Valid values: Tabs, Spaces
+IndentMode:                            Spaces
+
+# If IndentMode is set to spaces backspace will delete TabWidth spaces
+BackspaceDeletesTabs:                  false
+
+# Whether lines should be indented with tabs or spaces
+# Valid values: Tabs, Spaces
+PythonIndentMode:                      Spaces
+
+# Automatically detect the indentation mode (tabs or spaces) when the files is opened. If inconclusive defaults to the IndentMode setting
+AutoDetectIndentMode:                  false
+
+# Auto-indent new lines
+AutoIndent:                            true
+
+# Update the line indents after a paste
+UpdateIndentsOnPaste:                  true
+
+# Determines how lines copied with multi-cursor are pasted with a single cursor
+# Valid values: Lines, Block
+MultiCursorPasteMode:                  Lines
+
+# When creating a new line add tabs or spaces to the current indentation depth
+ExtendEmptyLines:                      true
+
+# The default WordWrap setting when opening files
+WordWrap:                              false
+
+# Show whitespace
+ShowWhitespace:                        false
+
+# Show Line Endings
+ShowLineEndings:                       false
+
+# Highlight all instances of the current symbol
+HighlightCurrentSymbol:                true
+
+# Highlight all instances of the current word
+HighlightCurrentWord:                  true
+
+# Highlight all instances of the currently selected word
+HighlightSelectedWord:                 true
+
+# true to make Toggle Comment command use // line comments instead of /* */
+CommentBlockUsesLineComments:          true
+
+# true to make the Comment command move to the next line on single line comments
+CommentBlockIncrementLine:             false
+
+# Typing an open bracket/brace char ((,{,[) with selected text will enclose the selection with that bracket/brace
+BracketSelectedText:                   true
+
+# Enable dragging of text with the mouse
+TextDrag:                              false
+
+# True to make the End key update the rectangle select instead of going to the end of each multi-cursor line
+EndKeyUpdatesRectSelect:               true
+
+# Enable colouring of braces and brackets based on depth
+ColorBracesByDepth:                    false
+
+# Allow editing of read only files
+AllowEditingOfReadOnlyFiles:           true
+
+# Always use spaces after current tab depth when aligning
+ExtendEmptyLinesUsingSpaces:           false
+
+# If true the PrevLocation and NextLocation commands will include docked tool windows
+LocationHistoryIncludesToolPanels:     false
+
+# Enable the Vim style editing
+Vim:                                   false
+
+# Automatically format statement or block when typing a ; or }
+AutoFormat:                            true
+
+# Automatically add a close brace after typing an open brace
+AutoAddCloseBrace:                     true
+
+# Automatically add a close brace and format the braces
+AutoAddCloseBraceAndFormat:            true
+
+# If true the open brace will be moved to the next line on auto-format
+OpenBraceOnNewLine:                    true
+
+# Update the current block indentation when a close brace is typed
+UpdateIndentsOnCloseBrace:             true
+
+# Update the indentation of braces as they are typed
+AutoIndentBraces:                      true
+
+# When pressing Enter between {} braces move the braces to new lines
+FormatBracesOnEnterSplit:              true
+
+# Automatically add a close bracket after typing an open bracket
+AutoAddCloseBracket:                   true
+
+# Align function arguments lines to the function open bracket
+BracketAlignFunctionArgs:              true
+
+# Align conditional lines to the open bracket
+BracketAlignConditionals:              false
+
+# Align lines in assignment statements to equals char
+AlignToEquals:                         true
+
+# true to indent case statements inside switch case block
+IndentCaseStatements:                  true
+
+# Automatically fix . and -> depending if the variable is a pointer
+AutoFixIndirection:                    false
+
+# Typing /** will add a */, Enter will add a new line starting with *
+AutoFormatBlockComments:               true
+
+# New comment lines will be started with * when AutoFormatBlockComments is enabled
+AutoFormatBlockCommentsNewLines:       true
+
+# 
+# Formatting
+# 
+
+# True to add a space after an open bracket and before a close bracket
+SpaceBrackets:                         true
+
+# True to add a space between conditional and open bracket. eg. if (true)
+SpaceAfterConditionals:                true
+
+# When aligning to a function call open bracket with tab indent mode use tabs up to the current indent level and then use spaces
+UseSpacesAfterCurrentIndent:           false
+
+# If true make sure there is 1 space before and one space after single equals chars
+FormatEquals:                          true
+
+# If true make sure there are no spaces before commas chars and 1 space after
+FormatCommas:                          true
+
+# Comma separated list of words to not format
+FormatExcludeList:                     
+
+# True to add a space after an open brace and before a close brace
+SpaceBraces:                           true
+
+
+# 
+# SourceControl
+# 
+
+# Attempt to checkout the file when it's edited
+PerforceOpenForEditOnEdit:             false
+
+# Attempt to checkout the file when it's saved
+PerforceOpenForEditOnSave:             false
+
+# 
+# Build
+# 
+
+# Build before starting debugging using the StartDebugging command
+BuildBeforeStartDebugging:             false
+
+# Build before running the exe
+BuildBeforeRun:                        false
+
+# Stop the debugger when a full build starts
+StopDebuggingOnBuild:                  false
+
+# Regular expression used to identify warnings in the build output
+# Valid values: regex
+BuildWarningRegex:                     
+
+# Regular expression used to identify errors in the build output
+# Valid values: regex
+BuildErrorRegex:                       
+
+# Close the build output panel after a successful build
+CloseBuildOutputAfterBuild:            true
+
+# Underline build errors in the source file
+UnderlineBuildErrors:                  true
+
+# Underline errors when a file is opened or saved
+AutoUnderlineErrors:                   true
+
+# Stop scrolling the build output when an error occurs
+StopScrollingOnError:                  true
+
+
+# 
+# Debug
+# 
+
+# The debugger exe path. Leave blank for sln workspaces to use Visual Studio as the debugger.
+DebuggerExe:                           
+
+# Sync the current debug line when it changes in the external debugger
+SyncDebugLine:                         true
+
+# 
+# Parser
+# 
+
+# true to enable autocomplete to automatically show as you type
+Autocomplete:                          true
+
+# Control+click in text editor to go to definition of symbol. Otherwise just selects word.
+ControlClickGotoDefinition:            true
+
+# The number of items to show in the autocomplete dropdown
+AutocompleteCount:                     6
+
+# Hide items with a low match score behind the 'more...' item
+AutoCompleteHideLowMatch:              true
+
+# Allow submitting of first item in list with tab even if no item is selected
+SubmitFirstAutocomplete:               true
+
+# true to make the Enter key submit autocomplete
+SubmitAutocompleteOnEnter:             true
+
+# Controls the column in which a file is opened for Goto symbol definition and Goto Build Error
+# Valid values: default, other
+GotoDefColumn:                         default
+
+# Center: scroll so the cursor is centered. Visible: scroll so the cursor is visible. Current: keep the cursor in the same view relative position
+# Valid values: Center, Visible, Current
+GotoDefScrollMode:                     Center
+
+# Center: scroll so the cursor is centered. Visible: scroll so the cursor is visible. Current: keep the cursor in the same view relative position
+# Valid values: Center, Visible, Current
+GotoResultScrollMode:                  Visible
+
+# When auto completing a function add the ( bracket and the ) bracket if it has no args
+AutoAddFunctionBrackets:               true
+
+# Use fuzzy matching in the FindSymbol panel
+FindSymbolFuzzyMatching:               true
+
+# List of comma separated defines for the parser
+# Valid values: string list (comma separated)
+GlobalDefines:                         
+
+# Value of the __cplusplus define. Leave blank to not define. ReparseAll needed after changing value.
+CPlusPlusDefine:                       199711L
+
+# Comma separated list of extensions for the C++ parser to parse. Requires a reparse all to take effect.
+ParserExtensions:                      .c,.cc,.cpp,.c++,.cp,.cxx,.h,.hh,.hpp,.h++,.hp,.hxx,.inl,.ixx,.vert,.frag,.comp,.geom,.eval,.cont,.glsl,.hlsl,.hlsli,.fx,.rgen,.usf,.ush,.cg,.fx,.pssl,.cu,.fxh
+
+# Comma separated list of paths to exclude (supports wildcards). Clear out cache for it to take effect.
+ParserExcludeFilters:                  *sqlite*
+
+# Comma separated list of paths. The parser will parse all files found in these directories.
+# End with * to add files recursively. Reopen workspace for this setting to take effect
+# Valid values: string list (comma separated)
+AdditionalIncludePaths:                
+
+# Comma separated list of files for the parser to prioritise. Used for unity builds and to choose multiply defines symbols. If a path contains a * it is treated as w wildcard, otherwise a path.EndsWith() check is used. Requires a ReparseAll.
+# Valid values: string list (comma separated)
+ParserPriorityFiles:                   
+
+# When autocompleting functions submit the autocomplete by typing (
+SubmitAutocompleteOnOpenBracket:       true
+
+# true to enable autocomplete in comments
+AutocompleteInComments:                false
+
+# Dismiss the autocomplete when the typed text matches one of these comma separated strings
+ExactMatchAutoComplete:                else,endif,once
+
+# Typedefs and using aliases will be resolved in GotoSymbolDefintion
+GotoDefResolvesTypedefs:               false
+
+# If true, goto definition on function calls will go to the function implementation instead of the declaration
+GotoFunctionImplementation:            true
+
+# true to enable the function info hover box (shows function args when typing a function call)
+EnableFunctionInfoHoverBox:            true
+
+# If true, '#if SOMETHING' will resolve to '#if 1' if SOMETHING isn't defined. Reopen the workspace and reparse for this to take effect.
+TreatUndefinedDefinesAsTrue:           false
+
+# Brightness of defined out code
+DefinedOutBrightness:                  0.55
+
+# True to use the regex syntax highlighting for keywords that are undefined by the parser. False means use the Language.Text colour.
+ColourUndefinedKeywords:               false
+
+# Files larger than this size (in bytes) will not be parsed.
+ParserMaxFileSize:                     52428800
+
+# Limit on the number of token the preprocessor will evaluate
+MaxPreprocessorTokenCount:             10000
+
+# Allow preprocessor lines to be indented
+AllowPreprocessorLineIndenting:        true
+
+# Indent requires statements
+IndentRequires:                        true
+
+# Used by the parser to determine if the file is a shader file. Requires full reparse.
+ShaderFileExtensions:                  .glsl,.hlsl,.fx,.fxh,.cg,.cgfx,.shader,.shadergraph,.compute,.hlsli,.vert,.frag,.geom,.comp,.tesc,.tese,.mesh,.task,.rgen,.rint,.rahit,.rchit,.rmiss,.rcall,.glslv,.glslf,.spv,.spirv,.spvasm,.cso,.dxbc,.dxil,.metal,.metallib,.air,.usf,.ush,.material,.vsh,.fsh,.gdshader,.ps,.vs,.pssl,.wgsl,.slang
+
+
+# 
+# WorkspaceSearch
+# 
+
+# Search will search files with these extensions
+# Valid values: string list (comma separated)
+Search.Extensions:                     .asm, .bat, .c, .cc, .cpp, .cs, .css, .csv, .cxx, .def, .disco, .dtd, .fx, .h, .hh, .hpp, .hlsl, .hlsli, .glsl, .htm, .html, .hxx, .idl, .inc, .inl, .java, .js, .jsx, .l, .ll, .lnx, .log, .mk, .pl, .pmk, .ps, .py, .s, .sh, .src, .srf, .tlh, .tli, .txt, .vb, .vsh, .wsdl, .xaml, .xml, .xsd, .xsl, .xslt, .y, .psh, .fsh, .sh, .shader, .vsct, .resx, .wxs, .php, .vsixmanifest, .uc, .sql, .webconfig, .aspx, .lua, .cshtml, .md, .usf, .ush, .pssl, .scons, .cu, .ini, .json, .yml, .toml, .10x_settings, .uproject
+
+# Comma separated list of wildcards for files to exclude
+# Valid values: string list (comma separated)
+Search.ExcludeList:                    */sqlite/*
+
+# Files in these directories will be added to the workspace search set
+# Valid values: string list (comma separated)
+Search.GlobalDirectories:              
+
+# Search will stop searching after this many results have been found
+Search.MaxResults:                     1000
+
+# The maximum file size that Search will index
+Search.MaxFileSize:                    10485760
+
+# Path mode for the Search panel results
+# Valid values: Full, Relative, Filename, FolderAndFile
+Search.PathMode:                       FolderAndFile
+
+# Use the current word as the initial search text when opening the Search panel
+Search.SearchCurrentWord:              true
+
+# Sort the file results by how often they have been opened
+Search.SortOpenFilesByOpenFrequency:   true
+
+# If true, go to a workspace search result will automatically set the find text
+Search.SetFindText:                    true
+
+# 
+# Misc
+# 
+
+# The maximum number of cores to use, -1 to use Min(SystemCoreCount*0.8, 12) (requires restart)
+MaxCoreCount:                          -1
+
+# Sleep when there is no user input and nothing is changing on the screen
+SleepWhenIdle:                         true
+
+# Enable verbose logging to the .log file
+VerboseLogging:                        false
+
+# Enable drag-drop and drag-reorder in the workspace tree
+EnableWorkspaceTreeDragDrop:           true
+
+# Enable VSync
+VSync:                                 true
+
+# By default 10x sends two stats to the 10x server, usage time and crash count. This data is completely annoymous and helps early detection of any serious issues. It can be disabled with this setting.
+EnableTelemetry:                       true
+
+# Open workspace files as text files unless explicitly opened with Open Workspace
+OpenWorkspaceFilesAsText:              false
+
+# The command to use for opening a terminal
+TerminalCommand:                       cmd.exe
+
+# The command to use for opening a Claude terminal
+ClaudeTerminalCommand:                 claude
+
+# The command to use for opening a Cursor terminal
+CursorTerminalCommand:                 cmd /c "agent || pause"
+

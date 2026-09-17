@@ -128,7 +128,7 @@ Editor.Current Line:                              15, 35, 90
 Editor.Selection Back:                            0, 0, 255
 
 # Foreground colour of selected text. Use 'default' for no foreground colour.
-Editor.Selection Fore:                            200, 200, 0
+Editor.Selection Fore:                            255, 255, 255
 
 # Text background colour for text highlighted by the Find tool
 Editor.Find.Text Highlight:                       95, 88, 25

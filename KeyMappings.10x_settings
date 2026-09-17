@@ -96,10 +96,10 @@ Control Shift U:             MakeSelectionUppercase
 Control U:                   MakeSelectionLowercase
 
 # Move current line up one
-Control Shift Up:            MoveLineUp
+Alt Up:            MoveLineUp
 
 # Move current line down one
-Control Shift Down:          MoveLineDown
+Alt Down:          MoveLineDown
 
 # Cut the current line
 Shift Delete:                CutLine
@@ -186,16 +186,16 @@ Control Alt Up:              MovePanelUp
 Control Alt Down:            MovePanelDown
 
 # Move the current panel focus left
-Alt Left:                    MovePanelFocusLeft
+#Alt Left:                    MovePanelFocusLeft
 
 # Move the current panel focus right
-Alt Right:                   MovePanelFocusRight
+#Alt Right:                   MovePanelFocusRight
 
 # Move the current panel focus up
-Alt Up:                      MovePanelFocusUp
+#Alt Up:                      MovePanelFocusUp
 
 # Move the current panel focus down
-Alt Down:                    MovePanelFocusDown
+#Alt Down:                    MovePanelFocusDown
 
 # Show the switch file panel
 Control Tab:                 ShowSwitchPanelPanel
@@ -440,11 +440,11 @@ Alt R:                       ReplaceNextInFile
 # Replace all items in the current file from the Find.Replace panel
 Shift Alt R:                 ReplaceAllInFile
 
-# Indent the current line or selected lines
-Control ]:                   IndentLine
+#  the current line or selected lines
+Alt Right:                   IndentLine
 
 # Unindent the current line or selected lines
-Control [:                   UnindentLine
+Alt Left:                   UnindentLine
 
 # Move the cursor to the previous word
 Control Left:                MoveCursorPrevWord

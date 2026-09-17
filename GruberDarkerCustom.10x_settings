@@ -2,7 +2,7 @@
 # Setting name must appear at start of line and there must be whitespace after the colon.
 
 # The main UI colour
-UI.UI:                                            24, 24, 24
+UI.UI:                                            0, 0, 0
 
 # Text colour for the main UI
 UI.UI Text:                                       228, 228, 239
@@ -14,7 +14,7 @@ UI.UI Selected Text:                              0, 0, 255
 UI.UI Selected Item:                              69, 61, 65
 
 # Colour of the main drop down menu
-UI.Menu:                                          24, 24, 24
+UI.Menu:                                          0, 0, 0
 
 # Colour of menu items as the mouse moves over
 UI.Menu (highlighted):                            40, 40, 40
@@ -26,7 +26,7 @@ UI.Menu (selected):                               40, 40, 40
 UI.App Border (active):                           40, 40, 40
 
 # App border when app is inactive
-UI.App Border (inactive):                         24, 24, 24
+UI.App Border (inactive):                         0, 0, 0
 
 # Colour of the tab for the currently active panel
 UI.Panels.Active Tab:                             40, 40, 40
@@ -38,10 +38,10 @@ UI.Panels.Active Tab Text:                        244, 244, 255
 UI.Panels.Inactive Tab Text:                      149, 169, 159
 
 # Colour of tabs for inactive panels
-UI.Panels.Inactive Tab:                           24, 24, 24
+UI.Panels.Inactive Tab:                           0, 0, 0
 
 # Colour of the scrollbar background
-UI.Panels.Scrollbar Background:                   24, 24, 24
+UI.Panels.Scrollbar Background:                   0, 0, 0
 
 # Colour of the scrollbar bar
 UI.Panels.Scrollbar Bar:                          69, 61, 65
@@ -116,7 +116,7 @@ TreeNodeText:                                     228, 228, 239
 Editor.Text:                                      228, 228, 239
 
 # Default background colour for all text editor windows
-Editor.Background:                                24, 24, 24
+Editor.Background:                                0, 0, 0
 
 # Text Editor cursor (caret) colour
 Editor.Cursor:                                    0, 255, 0
@@ -125,10 +125,10 @@ Editor.Cursor:                                    0, 255, 0
 Editor.Current Line:                              15, 35, 90
 
 # Background colour of selected text
-Editor.Selection Back:                            0, 0, 255
+Editor.Selection Back:                            0, 100, 100
 
 # Foreground colour of selected text. Use 'default' for no foreground colour.
-Editor.Selection Fore:                            default
+Editor.Selection Fore:                            220, 220, 220
 
 # Text background colour for text highlighted by the Find tool
 Editor.Find.Text Highlight:                       69, 61, 65
@@ -140,13 +140,13 @@ Editor.Find.Bracket Highlight:                    default
 Editor.Rename Symbol Back:                        204, 140, 60
 
 # Text foreground colour for text highlighted when renaming a symbol
-Editor.Rename Symbol Fore:                        24, 24, 24
+Editor.Rename Symbol Fore:                        0, 0, 0
 
 # Line number colours
 Editor.Line Numbers:                              100, 100, 100
 
 # Margin colour
-Editor.Margin:                                    24, 24, 24
+Editor.Margin:                                    0, 0, 0
 
 # Current symbol highlight colour
 Editor.SymbolHighlight:                           69, 61, 65
@@ -254,7 +254,7 @@ Html.Operator:                                    228, 228, 239
 Language.Text:                                    100, 100, 100
 
 # Text editor background colour
-Language.Background:                              24, 24, 24
+Language.Background:                              0, 0, 0
 
 # Number
 Language.Number:                                  149, 169, 159
@@ -314,7 +314,7 @@ Language.Comma:                                   149, 169, 159
 Language.Class:                                   150, 166, 200
 
 # Function
-Language.Function:                                228, 228, 239
+Language.Function:                                149, 169, 159
 
 # Member Function
 Language.MemberFunction:                          228, 228, 239
@@ -368,7 +368,7 @@ Language.Custom8:                                 244, 56, 65
 Language.Custom9:                                 228, 228, 239
 
 # Custom color defined in all color schemes that can be used in the syntax highlighting rules
-Language.Custom10:                                24, 24, 24
+Language.Custom10:                                0, 0, 0
 
 # Document Heading
 Language.Heading:                                 255, 221, 51
