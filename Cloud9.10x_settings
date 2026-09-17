@@ -2,20 +2,20 @@
 # Setting name must appear at start of line and there must be whitespace after the colon.
 
 # --- UI & Panels ---
-UI.UI:                                            0,0,0
+UI.UI:                                            24, 24, 24
 UI.UI Text:                                       235, 235, 235
 UI.UI Selected Text:                              255, 255, 255
 UI.UI Selected Item:                              60, 64, 67
-UI.Menu:                                          0,0,0
+UI.Menu:                                          24, 24, 24
 UI.Menu (highlighted):                            34, 34, 34
 UI.Menu (selected):                               34, 34, 34
 UI.App Border (active):                           60, 64, 67
-UI.App Border (inactive):                         0,0,0
+UI.App Border (inactive):                         24, 24, 24
 UI.Panels.Active Tab:                             100, 100, 100
 UI.Panels.Active Tab Text:                        235, 235, 235
 UI.Panels.Inactive Tab Text:                      200, 200, 200
-UI.Panels.Inactive Tab:                           0,0,0
-UI.Panels.Scrollbar Background:                   0,0,0
+UI.Panels.Inactive Tab:                           24, 24, 24
+UI.Panels.Scrollbar Background:                   24, 24, 24
 UI.Panels.Scrollbar Bar:                          60, 64, 67
 UI.Panels.Scrollbar Bar (hover):                  99, 99, 99
 UI.Panels.Scrollbar Bar (drag):                   119, 119, 119
@@ -36,7 +36,7 @@ TreeNodeText:                                     235, 235, 235
 
 # --- Editor Core ---
 Editor.Text:                                      235, 235, 235
-Editor.Background:                                0,0,0
+Editor.Background:                                24, 24, 24
 Editor.Cursor:                                    15, 255, 10
 Editor.Current Line:                              25, 35, 90
 Editor.Selection Back:                            60, 64, 67
@@ -46,7 +46,7 @@ Editor.Find.Bracket Highlight:                    99, 99, 99
 Editor.Rename Symbol Back:                        60, 64, 67
 Editor.Rename Symbol Fore:                        255, 255, 255
 Editor.Line Numbers:                              99, 99, 99
-Editor.Margin:                                    0,0,0
+Editor.Margin:                                    24, 24, 24
 Editor.SymbolHighlight:                           60, 64, 67
 Editor.WordHighlight:                             default
 Editor.Whitespace:                                60, 64, 67
@@ -58,26 +58,26 @@ Editor.StatusBarTextColour:                       235, 235, 235
 
 # --- True Cloud9 Syntax Highlighting ---
 Language.Text:                                    200, 80, 80
-Language.Background:                              0, 0, 0
+Language.Background:                              24, 24, 24
 
 # The Core Cloud9 Colors
 Language.Number:                                  214, 166, 94
-Language.Keyword:                                 150, 170, 170
-Language.ControlFlowKeyword:                      150, 170, 170
+Language.Keyword:                                 130, 150, 150
+Language.ControlFlowKeyword:                      130, 150, 150
 Language.NewDeleteKeyword:                        132, 182, 235
 Language.UsingKeyword:                            132, 182, 235
 Language.LiteralKeyword:                          132, 182, 235
-Language.String:                                  110, 150, 110
-Language.Comment:                                 95, 115, 95
-Language.DocComment:                              95, 115, 95
-Language.BlockComment:                            95, 115, 95
+Language.String:                                  135, 160, 135
+Language.Comment:                                 95, 120, 95
+Language.DocComment:                              95, 120, 95
+Language.BlockComment:                            95, 120, 95
 Language.Preprocessor:                            132, 182, 182
 
 # Everything else defaults to the light-grey foreground 
-Language.Type:                                    235, 235, 235
+Language.Type:                                    130, 150, 150
 Language.Class:                                   214, 166, 94
 Language.Function:                                214, 166, 94
-Language.MemberFunction:                          214, 166, 94
+Language.MemberFunction:                          220, 220, 220
 Language.Variable:                                220, 220, 220
 Language.MemberVariable:                          220, 220, 220
 Language.Enum:                                    220, 220, 220
@@ -91,7 +91,7 @@ Language.SemiColon:                               220, 220, 220
 Language.Comma:                                   220, 220, 220
 
 # Misc
-Language.Enum Value:                              214, 166, 94
+Language.Enum Value:                              220, 220, 220
 Language.DefinedOut:                              119, 119, 119
 
 # --- Tags & System Markers ---
