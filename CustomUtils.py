@@ -369,31 +369,6 @@ def FindEnclosingBrackets(start_x, start_y):
                         return open_pos, match_pos, char, close_char
     return None
 
-def FindMatchingClose(start_x, start_y, open_char, close_char, line_count):
-    """Scans forward to find the matching close character."""
-    nest_level = 1
-    for y in range(start_y, line_count):
-        line_text = N10X.Editor.GetLine(y)
-        x_start = start_x if y == start_y else 0
-        
-        for x in range(x_start, len(line_text)):
-            char = line_text[x]
-            if char == open_char:
-                nest_level += 1
-            elif char == close_char:
-                nest_level -= 1
-                if nest_level == 0:
-                    return (x, y)
-    return None
-
-def IsPosAfter(pos1, pos2):
-    """Returns True if pos1 is after pos2 in the document."""
-    x1, y1 = pos1
-    x2, y2 = pos2
-    if y1 > y2: return True
-    if y1 == y2 and x1 > x2: return True
-    return False
-
 def SelectInsideNextBrackets():
     current_file = N10X.Editor.GetCurrentFilename()
     if not current_file:
@@ -808,3 +783,63 @@ def IncrementList():
         N10X.Editor.InsertText(str(number_to_insert));
         increment += 1;
     
+
+
+#------------------------------------------------------------------------------
+_last_active_column = -1
+_auto_resize_enabled = False  # The mode starts OFF by default
+
+def ToggleAutoResizeMode():
+    """Toggles the 70/30 column auto-resize behavior."""
+    global _auto_resize_enabled, _last_active_column
+    
+    _auto_resize_enabled = not _auto_resize_enabled
+    
+    if _auto_resize_enabled:
+        # Reset the last active column so it instantly triggers a resize right now
+        _last_active_column = -1 
+        N10X.Editor.SetStatusBarText("Auto-Resize Mode: ON (70/30)")
+    else:
+        N10X.Editor.SetStatusBarText("Auto-Resize Mode: OFF")
+
+def OnUpdateAutoResizeColumns():
+    # 1. Check if the mode is actually turned on
+    if not _auto_resize_enabled:
+        return
+
+    global _last_active_column
+    
+    # 2. Get current focused panel coordinates (x, y)
+    pos = N10X.Editor.GetCurrentPanelGridPos()
+    if not pos:
+        return
+        
+    active_column = pos[0]
+    
+    # 3. Only calculate and resize if focus actually moved to a new column
+    if active_column != _last_active_column:
+        _last_active_column = active_column
+        
+        try:
+            # 4. Read current widths to determine the total pixel space available
+            width_0 = N10X.Editor.GetColumnWidth(0)
+            width_1 = N10X.Editor.GetColumnWidth(1)
+            total_width = width_0 + width_1
+            
+            if total_width > 0:
+                target_70 = int(total_width * 0.65)
+                target_30 = int(total_width * 0.35)
+                
+                # 5. Apply the Golden Ratio based on which column is active
+                if active_column == 0:
+                    N10X.Editor.SetColumnWidth(0, target_70)
+                    N10X.Editor.SetColumnWidth(1, target_30)
+                elif active_column == 1:
+                    N10X.Editor.SetColumnWidth(0, target_30)
+                    N10X.Editor.SetColumnWidth(1, target_70)
+        except Exception:
+            # Fail silently if there is only one column currently open
+            pass
+
+# Register the callback to run every frame
+N10X.Editor.AddUpdateFunction(OnUpdateAutoResizeColumns)
