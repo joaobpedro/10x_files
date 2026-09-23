@@ -843,3 +843,74 @@ def OnUpdateAutoResizeColumns():
 
 # Register the callback to run every frame
 N10X.Editor.AddUpdateFunction(OnUpdateAutoResizeColumns)
+
+
+
+#------------------------------------------------------------------------------
+def ToggleUflex2fComment():
+    # 1. Group the whole operation so Ctrl+Z undoes all lines at once
+    N10X.Editor.PushUndoGroup()
+    
+    cursor_count = N10X.Editor.GetCursorCount()
+    lines_to_toggle = set()
+    
+    # Grab every unique line currently occupied by a cursor
+    for i in range(cursor_count):
+        x, y = N10X.Editor.GetCursorPos(i)
+        lines_to_toggle.add(y)
+        
+    # 2. Check if we should comment or uncomment. 
+    # (If EVERY line already starts with #, we uncomment. Otherwise, we comment).
+    all_commented = True
+    for y in lines_to_toggle:
+        line = N10X.Editor.GetLine(y)
+        if line is not None:
+            stripped = line.lstrip()
+            if stripped != "" and not stripped.startswith('#'):
+                all_commented = False
+                break
+
+    # 3. Process lines from bottom to top (highest y first).
+    # This ensures that modifying characters doesn't shift coordinates of cursors above it.
+    for y in sorted(lines_to_toggle, reverse=True):
+        line = N10X.Editor.GetLine(y)
+        if line is None:
+            continue
+            
+        stripped = line.lstrip()
+        if not stripped:
+            continue # Skip completely empty lines
+            
+        if all_commented:
+            # --- UNCOMMENT LOGIC ---
+            idx = line.find('#')
+            if idx != -1:
+                N10X.Editor.SetCursorPos((idx, y))
+                N10X.Editor.ExecuteCommand("Delete") # Delete the '#'
+                
+                # If there's a space immediately after the '#', delete that too
+                if idx < len(line) - 1 and line[idx + 1] == ' ':
+                    N10X.Editor.ExecuteCommand("Delete")
+        else:
+            # --- COMMENT LOGIC ---
+            # Find the index of the first non-whitespace character
+            idx = len(line) - len(stripped)
+            N10X.Editor.SetCursorPos((idx, y))
+            N10X.Editor.InsertText("# ")
+
+    N10X.Editor.PopUndoGroup()
+
+def OnInterceptCommand(command):
+    """Intercepts standard 10x commands before they execute."""
+    if command == "ToggleComment":
+        filename = N10X.Editor.GetCurrentFilename()
+        
+        # Only hijack the command if we are in a uflex2f file
+        if filename and filename.lower().endswith(".2if"):
+            ToggleUflex2fComment()
+            return True # Returning True tells 10x we handled it successfully
+            
+    return False # Returning False lets 10x handle other files normally
+
+# Register the interceptor when the script loads
+N10X.Editor.AddInterceptCommandFunction(OnInterceptCommand)
