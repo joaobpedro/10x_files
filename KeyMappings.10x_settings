@@ -580,3 +580,5 @@ Control Down:                MoveCursorParagraphDown
 Alt W:						 DeleteWord
 
 Alt I:                       IncrementList
+
+Alt T:                       TransposeWords

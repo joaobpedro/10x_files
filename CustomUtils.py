@@ -914,3 +914,75 @@ def OnInterceptCommand(command):
 
 # Register the interceptor when the script loads
 N10X.Editor.AddInterceptCommandFunction(OnInterceptCommand)
+
+
+#------------------------------------------------------------------------
+def TransposeWords():
+    if not N10X.Editor.TextEditorHasFocus():
+        return
+        
+    x, y = N10X.Editor.GetCursorPos()
+    line = N10X.Editor.GetLine(y)
+    
+    if not line:
+        return
+
+    # Find all words (alphanumeric + underscore) and their boundaries
+    matches = [(m.start(), m.end(), m.group()) for m in re.finditer(r'\w+', line)]
+    
+    if len(matches) < 2:
+        return
+
+    # Determine which two words to swap based on Emacs M-t behavior
+    word1_idx = -1
+    for i, (start, end, text) in enumerate(matches):
+        if end >= x:
+            if x <= start:
+                if i == 0:
+                    word1_idx = 0 
+                else:
+                    word1_idx = i - 1 
+            else:
+                word1_idx = i 
+            break
+            
+    # Handle end-of-line cursor placement
+    if word1_idx == -1:
+        word1_idx = len(matches) - 2
+        
+    if word1_idx == len(matches) - 1:
+        word1_idx -= 1
+        
+    if word1_idx < 0:
+        return
+        
+    word2_idx = word1_idx + 1
+    
+    w1_start, w1_end, w1_text = matches[word1_idx]
+    w2_start, w2_end, w2_text = matches[word2_idx]
+    
+    separator = line[w1_end:w2_start]
+    new_text = w2_text + separator + w1_text
+
+    N10X.Editor.PushUndoGroup()
+    
+    # 1. Jump to the start of the first word
+    N10X.Editor.SetCursorPos((w1_start, y))
+    
+    # 2. Synchronously insert the transposed version. 
+    # This immediately pushes the original text to the right.
+    N10X.Editor.InsertText(new_text)
+    
+    # 3. Calculate the new coordinates of the old text that just got shifted
+    old_text_start = w1_start + len(new_text)
+    old_text_end = old_text_start + (w2_end - w1_start)
+    
+    # 4. Highlight the old text
+    N10X.Editor.SetSelection((old_text_start, y), (old_text_end, y))
+    
+    # 5. Asynchronously queue the deletion of the old text.
+    # When this fires, the cursor will automatically collapse to the exact 
+    # end of the newly inserted text, matching Emacs behavior perfectly.
+    N10X.Editor.ExecuteCommand("Delete")
+    
+    N10X.Editor.PopUndoGroup()
